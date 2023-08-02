@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-
+ 
 import { Textarea } from '../../components/Textarea';
 import { NoteItem } from '../../components/NoteItem';
 import { Section } from '../../components/Section';
@@ -44,6 +44,23 @@ export function New() {
   }
 
   async function handleNewNote() {
+    if(!title) {
+      return alert("Digite o titulo da nota");
+    }
+
+    //Opcional
+/*     if(!description) {
+      return alert("Nem todos os campos de estão adicionados, é isso mesmo?");
+    } */
+
+    if(newTag) {
+      return alert("Nem todos de tag os campos estão adicionados, é isso mesmo?");
+    }
+
+    if(newLink){
+      return alert("Nem todos os campos de link estão adicionados, é isso mesmo?");
+    }
+
     await api.post("/notes", {
       title,
       description,
